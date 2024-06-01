@@ -32,7 +32,7 @@ export const jwtParse = async (
 
     const token = authorization.split(' ')[1];
     try{
-        const decoded = jwt|.decode(token) as jwt.JwtPayload;
+        const decoded = jwt.decode(token) as jwt.JwtPayload;
         const auth0Id = decoded.sub;
         const user = await usuario.findOne({ auth0Id });
 
