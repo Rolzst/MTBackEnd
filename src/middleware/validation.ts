@@ -15,16 +15,26 @@ const handleValidationErrors = async (
 } //Fin de handleValidationErrors
 
 export const validateUserRequest = [
-    body("tarjetas").isArray()
-        .withMessage("Las tarjetas son requeridas"),
-    body("tarjetas.*.nombre").notEmpty()
-        .withMessage("El nombre del propietario es requerido"),
-    body("tarjetas.*.noTarjeta").isInt({min: 16})
-        .withMessage("El número de tarjeta es requerido"),
-    body("tarjetas.*.fechaVencimiento").isInt({min: 4})
-        .withMessage("La fecha de vencimiento es requerida"),
-    body("tarjetas.*.cvc").isInt({min: 3, max: 3})
-        .withMessage("El cvc debe tener 3 números"),
 
+    body("noTarjeta").isInt({min: 16})
+        .withMessage("El número de tarjeta es requerido"),
+    body("fechaVencimiento").isInt({min: 4})
+        .withMessage("La fecha de vencimiento es requerida"),
+    body("cvc").isInt({min: 3})
+        .withMessage("El cvc debe tener 3 números"),
+    body("calle").isString()
+        .notEmpty()
+        .withMessage("La calle debe ser string"),
+    body("colonia").isString()
+        .notEmpty()
+        .withMessage("La colonia debe ser string"),
+    body("estado").isString()
+        .notEmpty()
+        .withMessage("El estado debe ser string"),
+    body("pais").isString()
+        .notEmpty()
+        .withMessage("El pais debe ser string"),
+    body("cp").isInt({min: 8})
+        .withMessage("El código postal debe tener 8 números"),
     handleValidationErrors
 ]; //Fin del validateUserRequest

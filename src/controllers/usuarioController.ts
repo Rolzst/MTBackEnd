@@ -39,13 +39,22 @@ const createUsuario = async (req: Request, res: Response) =>
 
 const updateUsuario = async (req: Request, res: Response) =>
 {
-    try {      
+    try {
+        const { noTarjeta, fechaVencimiento, cvc, calle, colonia, estado, pais, cp } = req.body;
         const user = await Usuario.findById(req.userId);
 
         if (!user){
             return res.status(404)
                 .json({ message: 'Usuario no encontrado' })
         }
+        user.noTarjeta = noTarjeta;
+        user.fechaVencimiento = fechaVencimiento;
+        user.cvc = cvc;
+        user.calle = calle;
+        user.colonia = colonia;
+        user.estado = estado;
+        user.pais = pais;
+        user.cp = cp;
 
         await user.save();
         res.send(user);

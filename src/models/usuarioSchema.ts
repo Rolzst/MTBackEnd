@@ -1,24 +1,5 @@
 import mongoose from "mongoose";
 
-const tarjetaSchema = new mongoose.Schema({
-    nombre:{
-        type: String,
-        required: true
-    },
-    noTarjeta: {
-        type: String,
-        required: true,
-    },
-    fechaVencimiento: {
-        type: String,
-        required: true,
-    },
-    cvc: {
-        type: Number,
-        required: true,
-    }
-})
-
 const usuarioSchema = new mongoose.Schema({
     auth0Id: {
         type: String,
@@ -28,7 +9,30 @@ const usuarioSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    tarjetas: [tarjetaSchema],
+    noTarjeta: {
+        type: String,
+    },
+    fechaVencimiento: {
+        type: String,
+    },
+    cvc: {
+        type: Number,
+    },
+    calle: {
+        type: String,
+    },
+    colonia: {
+        type: String,
+    },
+    estado: {
+        type: String,
+    },
+    pais: {
+        type: String,
+    },
+    cp: {
+        type: Number,
+    }
 })
 
 export default mongoose.model("Usuarios", usuarioSchema);
